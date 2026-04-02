@@ -39,3 +39,12 @@ print("Alice's cypher:", a5.bytes_to_string(aliceCypher))
 # Bob décrypte le message d'Alice
 bobDecypher = bob.decypher(aliceCypher)
 print("Bob's decypher:", a5.bytes_to_string(bobDecypher))
+
+
+
+
+# exemple de génération d'un nombre premier et d'un générateur pour le groupe multiplicatif modulo ce nombre premier, utilisé dans l'algorithme de Diffie-Hellman
+p = helman.generate_premier()
+print("Generated prime:", p)
+g = helman.find_generator(p)
+print("Generator:", g)

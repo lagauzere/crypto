@@ -1,13 +1,10 @@
 .PHONY: a5 helman main help
 
 a5:
-@printf "a5.py est un module de bibliothèque. Utilisez 'make main' ou 'python3 main.py'.\n"
+	python3 a5.py # utilisé lors des tests et de l'implementation de l'algorithme A5/1
 
 helman:
-@printf "helman.py est un module de bibliothèque. Utilisez 'make main' ou 'python3 main.py'.\n"
-
+	python3 helman.py # utilisé lors des tests et de l'implementation de l'algorithme de Diffie-Hellman
 main:
-python3 main.py
+	python3 main.py
 
-help:
-@printf "Usage:\n  make main     # exécute le script de démonstration\n  make a5       # rappel : a5.py est un module de bibliothèque\n  make helman   # rappel : helman.py est un module de bibliothèque\n"
