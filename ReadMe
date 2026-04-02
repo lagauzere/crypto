@@ -13,14 +13,30 @@ L'objectif est d'illustrer des concepts de base en cryptographie :
 
 ## Contenu du projet
 
-- `a5.py` : implémentation du chiffrement A5 avec trois LFSR et la règle de majorité.
-- `helman.py` : fonctions de base pour Diffie-Hellman et des tests de primalité Miller-Rabin.
+- `a5.py` : implémentation d’une variante d’un cryptosysteme : A5/1.
+Chiffre et déchiffre des chaînes de caractères bit par bit.
+Permet l’initialisation avec une clé aléatoire ou personnalisée.
+
+- `helman.py` : implémentation d’un échange de clés Diffie-Hellman avec génération de nombres premiers et recherche de générateurs.
+Génération de nombres premiers 512 bits avec test de primalité de type Miller-Rabin.
+Calcul de générateurs pour le groupe multiplicatif modulo p.
+Calcul du secret partagé entre deux parties.
+
 - `main.py` : script de démonstration combinant le chiffrement A5 et l'échange de clés Diffie-Hellman.
+
 - `Makefile` : commandes pratiques pour lancer le script principal.
 
 ## Prérequis
 
 - Python 3
+- SymPy pour la factorisation partielle : 'pip install sympy'
+
+## Modules Python utilisés :
+import random
+from random import randint, randrange
+import math
+from math import gcd
+from sympy import factorint
 
 ## Exécution
 
@@ -72,4 +88,3 @@ Le script `main.py` réalise :
 - `make main` : exécute `main.py`.
 - `make a5` : affiche un rappel que `a5.py` est principalement une bibliothèque.
 - `make helman` : affiche un rappel que `helman.py` est principalement une bibliothèque.
-
