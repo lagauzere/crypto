@@ -10,12 +10,6 @@ def xor(a, b):
 def string_to_bytes(string:str) : 
     return [list(map(int,format(ord(char),'08b'))) for char in string]
 
-def bits_to_int(bits_table) :
-    integer = 0
-    for bit in bits_table:
-        integer = (integer << 1) | (1 if bit else 0)
-    return integer
-
 
 def bytes_to_string(bytes_table) :
     string = ""

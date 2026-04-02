@@ -1,0 +1,75 @@
+# Projet Crypto
+
+Ce projet est une démonstration pédagogique de deux notions de cryptographie :
+- un chiffrement de flux inspiré du mécanisme A5/1 dans `a5.py`
+- un échange de clés Diffie-Hellman dans `helman.py`
+
+## Objectif
+
+L'objectif est d'illustrer des concepts de base en cryptographie :
+- génération de flux de clé avec des registres à décalage à rétroaction linéaire (LFSR)
+- chiffrement/déchiffrement symétrique bit à bit
+- échange de clé secrète entre deux parties via Diffie-Hellman
+
+## Contenu du projet
+
+- `a5.py` : implémentation du chiffrement A5 avec trois LFSR et la règle de majorité.
+- `helman.py` : fonctions de base pour Diffie-Hellman et des tests de primalité Miller-Rabin.
+- `main.py` : script de démonstration combinant le chiffrement A5 et l'échange de clés Diffie-Hellman.
+- `Makefile` : commandes pratiques pour lancer le script principal.
+
+## Prérequis
+
+- Python 3
+
+## Exécution
+
+Depuis le répertoire du projet, lancez :
+
+```bash
+python3 main.py
+```
+
+Ou utilisez le `Makefile` :
+
+```bash
+make main
+```
+
+Le script `main.py` réalise :
+1. un chiffrement et un déchiffrement A5 d'un message texte
+2. une simulation de partage de clé Diffie-Hellman entre Alice et Bob
+3. le chiffrement du message d'Alice à Bob avec le secret partagé
+
+## Structure des fichiers
+
+- `a5.py`
+  - `A5` : classe principale pour le chiffrement et le déchiffrement.
+  - fonctions utilitaires : `xor`, `string_to_bytes`, `bytes_to_string`, `get_feedback`, `inc_counter`.
+- `helman.py`
+  - `square_and_multiply` : exponentiation modulaire rapide.
+  - `test_rabin` et `miller_rabin` : tests de primalité probabilistes.
+  - `generate_premier` : génération de nombres premiers.
+  - `ordre`, `calculate_generator` : fonctions de théorie des nombres.
+  - `diffie_hellman` : génération du secret partagé.
+- `main.py`
+  - script d'exemple qui combine les deux modules précédents.
+
+## Notes importantes
+
+- L'algorithme A5 implémenté ici est simplifié et vise à illustrer le principe des LFSR et du chiffrement par flux.
+- La génération de nombres premiers est basique et peut être lente pour des tailles importantes.
+
+## Améliorations possibles
+
+- ajouter une gestion de clés plus robuste et un format de clé standardisé.
+- prendre en charge des données binaires au lieu de seulement du texte ASCII.
+- améliorer la génération de nombres premiers et utiliser des paramètres Diffie-Hellman plus sécurisés.
+- ajouter des tests unitaires pour valider chaque module.
+
+## Makefile
+
+- `make main` : exécute `main.py`.
+- `make a5` : affiche un rappel que `a5.py` est principalement une bibliothèque.
+- `make helman` : affiche un rappel que `helman.py` est principalement une bibliothèque.
+

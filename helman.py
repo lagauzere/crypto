@@ -64,14 +64,16 @@ def calculate_generator(p):
         if ordre(i, p) == p-1:
             return i
 
+
+#Simulation de l'échange de clés Diffie-Hellman entre Alice et Bob, ici, on retourne le secret partagé
 def diffie_hellman(p, g, a=None, b=None):
     if a is None:
         a = randint(1, p-1)
     if b is None:
         b = randint(1, p-1)
 
-    A = pow(g, a, p)
-    B = pow(g, b, p)
+    A = pow(g, a, p) # normalent, c'est alice qui envoie A à Bob,
+    B = pow(g, b, p)  # normalement, c'est bob qui envoie B à Alice
 
     shared_secret_a = pow(B, a, p)
     shared_secret_b = pow(A, b, p)
