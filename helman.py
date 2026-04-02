@@ -1,7 +1,11 @@
 import math
 from math import gcd
 import random
-from random import randint
+from random import randint, randrange
+from sympy import factorint
+
+
+
 
 def square_and_multiply(a,k,n):
     h = 1
@@ -63,6 +67,19 @@ def calculate_generator(p):
     for i in range(2, p):
         if ordre(i, p) == p-1:
             return i
+
+def find_generator(p):
+    small_factors = factorint(p-1, limit=10**6.5).keys() # factorint retourne les facteurs premiers de n jusqu’au limit, keys() récupère uniquement les nombres premiers distincts
+    # on teste pour tous les petits facteurs, on devrait tout tester mais ça coûte trop chère en temps donc on teste les plus succeptibles d'être faux : les petits facteurs -> limite à 10**6.5
+    while True:
+        g = randrange(2, p-1)
+        g_is_a_generator = True 
+        for q in small_factors: # debut du test -> théorie des groupes cycliques
+            if square_and_multiply(g, (p-1)//q, p) == 1:
+                g_is_a_generator = False
+                break
+            if g_is_a_generator:
+                return g
 
 
 #Simulation de l'échange de clés Diffie-Hellman entre Alice et Bob, ici, on retourne le secret partagé
