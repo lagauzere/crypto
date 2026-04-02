@@ -1,24 +1,23 @@
 from random import randint
-
 import helman 
 import a5 
 
-
-
 #test a5
+print("==========testing A5/1 stream cipher implementation============:")
 cryptpo = a5.A5()
 message = "hello world, i love cryptography"
-print(message)
+print("A5 message:", message)
 cypher = cryptpo.cypher(message)
-print(a5.bytes_to_string(cypher))
+print("A5 cypher:", a5.bytes_to_string(cypher))
 decypher = cryptpo.decypher(cypher)
-print(a5.bytes_to_string(decypher))
+print("A5 decypher:", a5.bytes_to_string(decypher))
+print("\n\n")
 
 #test Diffie-Hellman avec échange de clés entre Alice et Bob, et chiffrement du message d'Alice à Bob avec le secret partagé, et déchiffrement du message par Bob
+print("==========testing Diffie-Hellman key exchange and A5/1 encryption with shared secret============:")
 p = 73354658883438629681302852888425819414799977307764540519012033294405083679929453038354
 58008138016530970254318172965357391199557120543758438497838095839321
 g = 3
-
 bobKey = randint(1, p-1)
 aliceKey = randint(1, p-1)
 
@@ -39,11 +38,13 @@ print("Alice's cypher:", a5.bytes_to_string(aliceCypher))
 # Bob décrypte le message d'Alice
 bobDecypher = bob.decypher(aliceCypher)
 print("Bob's decypher:", a5.bytes_to_string(bobDecypher))
+print("\n\n")
 
 
 
 
 # exemple de génération d'un nombre premier et d'un générateur pour le groupe multiplicatif modulo ce nombre premier, utilisé dans l'algorithme de Diffie-Hellman
+print("==========testing prime generation and generator finding for Diffie-Hellman============:")
 p = helman.generate_premier()
 print("Generated prime:", p)
 g = helman.find_generator(p)
